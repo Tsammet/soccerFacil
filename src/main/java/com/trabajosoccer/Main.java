@@ -21,6 +21,7 @@ public class Main {
         Controller controlDoctors = new Controller();
         viewDoctor.controlador = controlDoctors;
         
+
         Scanner eleccion = new Scanner(System.in);
         
         while (true) {
@@ -40,6 +41,7 @@ public class Main {
                 case 1:
                     viewTeam vistaTeam = new viewTeam();
                     vistaTeam.start();
+                    
                     break;
             
                 case 2:

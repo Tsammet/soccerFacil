@@ -9,12 +9,12 @@ import Entidades.Team;
 
 public class Controller {
 
-    public Hashtable <String, Team> equipos = new Hashtable<>();
+    public static Hashtable <String, Team> equipos = new Hashtable<>();
 
-    public Hashtable <String, Player> jugadores = new Hashtable<>();
+    public static Hashtable <String, Player> jugadores = new Hashtable<>();
 
-    public Hashtable <String, Coach> coachs = new Hashtable<>();
+    public static Hashtable <String, Coach> coachs = new Hashtable<>();
 
-    public Hashtable <String, Doctor> doctors = new Hashtable<>();
+    public static Hashtable <String, Doctor> doctors = new Hashtable<>();
 
 }

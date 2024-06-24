@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.trabajosoccer.Controller;
 
+import Entidades.Player;
 import Entidades.Team;
 
 public class viewTeam {
@@ -21,7 +22,8 @@ public class viewTeam {
             System.out.println("3. Busca un equipo: ");
             System.out.println("4. Elimina un equipo: ");
             System.out.println("5. Lista todos los equipo: ");
-            System.out.println("6. Salir ");
+            System.out.println("6. Agregar un jugador a un equipo");
+            System.out.println("7. Salir ");
             System.out.println("-----------------------------------------");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -70,7 +72,11 @@ public class viewTeam {
                     if (eqBuscar == null){
                         System.out.println("El código del equipo que deseas buscar no se encuentra en el Hash <3");}
                     else{
-                        System.out.println("El nombre del equipo que buscaste es " + eqBuscar.getNombre());
+                        System.out.println("El nombre del equipo que buscaste es " + eqBuscar.getNombre() + " y sus jugadores son: ") ;
+                        for (String codJugador : controlador.jugadores.keySet()) {
+                            Player jugadoresTodos = controlador.jugadores.get(codJugador);
+                            System.out.println("Codigo Jugador: "+ codJugador + " nombre jugador : " + jugadoresTodos.getNombre());
+                        }
                     }
                     break;
                     
@@ -97,8 +103,35 @@ public class viewTeam {
                     }
 
                     break;
-                    
+
                 case 6:
+
+                    Player jugadorIngresar = new Player();
+                    String codigoJugadorIngresar = null;
+                    System.out.println("Cuàl es el código del jugador que vas a ingresar a un equipo: ");
+                    codigoJugadorIngresar = sc.nextLine();
+                    jugadorIngresar = controlador.jugadores.get(codigoJugadorIngresar);
+                    System.out.println("-----------------------");
+                    System.out.println("El jugador al que le asignarás un equipo es a : " + jugadorIngresar.getNombre());
+                    System.out.println("-----------------------");
+                    System.out.println("LOS EQUIPOS A LOS QUE PUEDES INGRESARLO SON: ");
+
+                    for (String codEquipos : controlador.equipos.keySet()) {
+                        Team equipo = controlador.equipos.get(codEquipos);
+                        System.out.println("codigo: " + codEquipos + " Nombre: "+ equipo.getNombre());
+                    }
+
+                    Team equ = new Team();
+                    String codigoEquipoJugador = null;
+                    System.out.println("Pon el código del equipo al que deseas ingresarlo: ");
+                    codigoEquipoJugador = sc.nextLine();
+                    equ = controlador.equipos.get(codigoEquipoJugador);
+                    
+                    equ.addJugador(jugadorIngresar);
+                    
+                    break;
+                    
+                case 7:
 
                     System.out.println("Saliendo del menú de equipos...");
                     return;

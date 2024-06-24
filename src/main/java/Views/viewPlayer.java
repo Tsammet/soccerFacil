@@ -1,11 +1,11 @@
-package Views;
+package 
+Views;
 
 import java.util.Scanner;
 
 import com.trabajosoccer.Controller;
 
 import Entidades.Player;
-import Entidades.Team;
 
 public class viewPlayer {
     public static Controller controlador;
@@ -14,25 +14,20 @@ public class viewPlayer {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-                System.out.println("-----------------------------------------");
-                System.out.println("1. Agrega un nuevo Jugador: ");
-                System.out.println("2. Actualiza un Jugador: ");
-                System.out.println("3. Busca un Jugador: ");
-                System.out.println("4. Elimina un Jugador: ");
-                System.out.println("5. Lista todos los Jugador: ");
-                System.out.println("6. Salir ");
-                System.out.println("-----------------------------------------");
+            System.out.println("-----------------------------------------");
+            System.out.println("1. Agrega un nuevo Jugador: ");
+            System.out.println("2. Actualiza un Jugador: ");
+            System.out.println("3. Busca un Jugador: ");
+            System.out.println("4. Elimina un Jugador: ");
+            System.out.println("5. Lista todos los Jugador: ");
+            System.out.println("6. Salir ");
+            System.out.println("-----------------------------------------");
 
             int choice = sc.nextInt();
             sc.nextLine();
 
             switch (choice) {
                 case 1:
-
-                    String codigoEquipo = null;
-                    System.out.println("Ingrese el equipo al que pertenece el jugador: ");
-                    codigoEquipo = sc.nextLine();
-                    Team equipo = controlador.equipos.get(codigoEquipo);
 
                     Player jugador = new Player();
                     String codigoJugador = null;
@@ -54,10 +49,6 @@ public class viewPlayer {
                     System.out.println("Cuál es la posición del jugador: ");
                     jugador.setPosicion(sc.nextLine());
                     controlador.jugadores.put(codigoJugador, jugador);
-
-                    equipo.addJugador(jugador);
-
-                    System.out.println("El jugador: "+ jugador.getNombre() + " pertenece al equipo: " + equipo.getNombre());
 
                     break;
 
