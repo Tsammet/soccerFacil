@@ -8,9 +8,11 @@ public class Team {
     private String nombre;
     private String ciudad;
     private List<Player> listaJugadores;
+    private List<Coach> listaCoachs;
 
     public Team(){
         listaJugadores = new ArrayList<Player>();
+        listaCoachs = new ArrayList<Coach>();
     }
 
     public Team(String nombre, String ciudad) {
@@ -43,4 +45,17 @@ public class Team {
     public void addJugador(Player jugador){
         this.listaJugadores.add(jugador);
     }
+
+    public List<Coach> getListacCoachs() {
+        return listaCoachs;
+    }
+
+    public void setListacCoachs(List<Coach> listaCoachs) {
+        this.listaCoachs = listaCoachs;
+    }
+
+    public void addCoach(Coach entrenador){
+        this.listaCoachs.add(entrenador);
+    }
+
 }

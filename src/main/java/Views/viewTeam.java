@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.trabajosoccer.Controller;
 
+import Entidades.Coach;
 import Entidades.Player;
 import Entidades.Team;
 
@@ -23,7 +24,8 @@ public class viewTeam {
             System.out.println("4. Elimina un equipo: ");
             System.out.println("5. Lista todos los equipo: ");
             System.out.println("6. Agregar un jugador a un equipo");
-            System.out.println("7. Salir ");
+            System.out.println("7. Agregar un Entrenador a un equipo");
+            System.out.println("8. Salir ");
             System.out.println("-----------------------------------------");
             int choice = sc.nextInt();
             sc.nextLine();
@@ -77,6 +79,14 @@ public class viewTeam {
                             Player jugadoresTodos = controlador.jugadores.get(codJugador);
                             System.out.println("Codigo Jugador: "+ codJugador + " nombre jugador : " + jugadoresTodos.getNombre());
                         }
+
+                        System.out.println("Sus entrenadores son: ");
+
+                        for (String codCoach : controlador.coachs.keySet()) {
+                            Coach coachTodos = controlador.coachs.get(codCoach);
+                            System.out.println("Codigo Jugador: "+ codCoach + " nombre jugador : " + coachTodos.getNombre());
+                        }
+
                     }
                     break;
                     
@@ -132,6 +142,35 @@ public class viewTeam {
                     break;
                     
                 case 7:
+
+                    Coach ingresarCoach = new Coach();
+                    String codigoCoachIngresar = null;
+                    System.out.println("Cuál es el código del coach que ingresarás: ");
+                    codigoCoachIngresar = sc.nextLine();
+                    ingresarCoach = controlador.coachs.get(codigoCoachIngresar);
+                    System.out.println("-----------------------");
+                    System.out.println("El coach al que le asignarás un equipo es a : " + ingresarCoach.getNombre());
+                    System.out.println("-----------------------");
+                    System.out.println("LOS EQUIPOS A LOS QUE PUEDES INGRESARLO SON: ");
+
+                    for (String codEquipos : controlador.equipos.keySet()) {
+                        Team equipo = controlador.equipos.get(codEquipos);
+                        System.out.println("codigo: " + codEquipos + " Nombre: "+ equipo.getNombre());
+                    }
+
+                    
+                    Team equCo = new Team();
+                    String codigoEquipoCoach = null;
+                    System.out.println("Pon el código del equipo al que deseas ingresarlo: ");
+                    codigoEquipoCoach = sc.nextLine();
+                    equCo = controlador.equipos.get(codigoEquipoCoach);
+                    
+                    equCo.addCoach(ingresarCoach);
+                    
+                    break;
+
+
+                case 8:
 
                     System.out.println("Saliendo del menú de equipos...");
                     return;
